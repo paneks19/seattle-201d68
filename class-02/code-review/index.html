@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Day 1 Lab a1b</title>
+    <!-- this is an internal style  -->
+    <style>
+      h1{
+        color: purple;
+        text-align: center;
+        text-decoration: underline;
+      }
+      p{
+        text-align: left;
+        /* border-color: crimson;
+        border-width: 5px;
+        border-style: dashed; */
+        border: dashed 5px crimson;
+        color: black;
+        padding: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!-- put important information like navigation and big titles -->
+      <!-- inline styles are styles that go in the line that you want to style  -->
+      <h1>Class 1 Lab</h1>
+    </header>
+    <main>
+      <p>Let's have some fun with questions!</p>
+      <p syle="color:blue">What is your favorite movie</p>
+    </main>
+    <footer>
+      copywright by me
+    </footer>
+    <script>
+      var userName = prompt('Hi there. What is your name?');
+
+      // this is call concatenation
+      console.log('The user\'s name: ' +  userName);
+
+      alert('It\'s really nice to meet you, ' + userName);
+      
+      var favoriteMovie = prompt('What is your favorite movie, ' + userName + '?');
+
+      console.log('The user\'s favorite movie: ' +  favoriteMovie);
+
+      alert ('That\'s such a cool coincidence, ' + userName +'! I love ' + favoriteMovie + ' too!');
+
+      var userLocation = prompt('Where do you live, ' + userName +'?');
+
+      console.log('The user\'s current location: ' +  userLocation);
+
+      alert ('Oh, cool! ' + userLocation + ' is a really cool place, ' + userName + ', and I bet a lot of people there love your favorite movie, ' + favoriteMovie +'.');
+      
+      // //Now i'm going to ask the user if they first watched the movie at the location they live in.
+      // var isWhereWatchedMovie;
+    
+      // do {
+      //   isWhereWatchedMovie = prompt ('Is that where you first watched your favorite movie?');
+      //   //converting to upper case so I don't have to create a million 
+      //   isWhereWatchedMovie = isWhereWatchedMovie.toUpperCase();
+      
+      
+      //   //if they watched the movie
+      //   if (isWhereWatchedMovie == 'YES') { 
+      //       alert('I know a lot about you now! Your name is ' + userName + ", you live in " + userLocation + ', and that\'s also where you first watched ' + favoriteMovie + '!');
+      //       console.log('The user first watched the movie in their current location');
+      //   }
+      //   else if (isWhereWatchedMovie == 'NO') {
+      //       alert('I know a lot about you now! Your name is ' + userName + ", you live in " + userLocation + ', but that\'s NOT where you first watched ' + favoriteMovie + '!');
+      //       console.log('The user first watched the movie in a different location from their current one');
+      //   }
+      //   else {
+      //       alert('I\'m sorry, ' + userName + ', I didn\'t understand your answer. Please answer with yes or no only.')
+      //       console.log('The user did not use the words yes or no, so going to ask them again');
+      //   }
+      // }
+      // while (isWhereWatchedMovie!='YES' & isWhereWatchedMovie!='NO');
+
+    </script>
+  </body>
+</html>
