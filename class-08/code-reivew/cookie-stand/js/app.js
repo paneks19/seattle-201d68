@@ -91,6 +91,54 @@ function headerRow() {
   parentElement.appendChild(trElement);
 }
 
+// this function will generate our footer row of hourly totals as well as our total of all totals
+function generateFooterRow(){
+  //variable to hold total of all totals
+  var totalOfallTotal = 0;
+  var hourlyTotalsArray = [];
+
+  var trElement = document.createElement('tr');
+
+  // OUTER LOOOP: hours
+    // for ever hour I need to do the following:
+  for(var i=0; i<headerArrayHours.length; i++){
+    // I might need a variable to keep track of the cookies sales for each hour
+    var hourlyCookieSales = 0;
+
+    // example: i = 0 => 6am
+    for(var j=0; j<cookieLocations.length; j++){
+      // INNER LOOP: add every store cookie sales for that hour
+      // example: j=0 => seattle (i is still 0, which means it is still 6am)
+      hourlyCookieSales += cookieLocations[j].totalCookiesPerHour[i] // seattle at 6am, lima at 6am, paris at 6am...
+        // once I have that hourly, add it to my total of all totals
+      totalOfallTotal += cookieLocations[j].totalCookiesPerHour[i];
+
+    }
+
+    hourlyTotalsArray.push(hourlyCookieSales);
+
+  }
+
+  // OOPs - need an empty td first to make everything line up
+
+  console.log('totalOfAllTotals:', totalOfallTotal);
+  console.log('hourlyTotalsArray', hourlyTotalsArray);
+  // loop through hourly totals array 
+  for(var k=0; k<hourlyTotalsArray.length; k++){
+    // make a td
+    var tdElement = document.createElement('td');
+    // give it content
+    tdElement.textContent = hourlyTotalsArray[k];
+    // append to the tr
+    trElement.appendChild(tdElement);
+  }
+
+  // we need to append the totalOfAllTotals
+
+  parentElement.appendChild(trElement);
+
+}
+
 
 // executable code
 
@@ -100,6 +148,8 @@ for(var i=0; i<cookieLocations.length; i++){
   cookieLocations[i].generateHourlyCookies();
   cookieLocations[i].render();
 }
+
+generateFooterRow();
 
 
 
