@@ -21,7 +21,7 @@ Javascript, CSS
 
 ##### Instructions for installation and use
 
-Sales page, please imput your data and recieve a breakdown of sales!
+Sales page, please imput your data and recieve a breakdown of sales! Navigate to the following link: 
 
 ##### Information on the license
 
