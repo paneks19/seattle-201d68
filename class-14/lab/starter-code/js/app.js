@@ -16,9 +16,20 @@ Cart.prototype.addItem = function(event) {
 
   event.preventDefault();
 
-  console.log('test');
 
-  console.log(event.target.option);
+
+  console.log('test');
+  for (var j=0; j<allProducts.length; j++){
+    
+    console.log('all products', allProducts[j].name);
+    console.log('event.target', event.target);
+    console.log(event.target.menuOption);
+
+    if (event.target.allProducts[j].name == allProducts[j].name){
+      console.log('event.target.value', event.target.allProducts[j].name);
+    }
+
+  }
 
   console.log(event.target.quantity.value); //captures value of quantity input box
 

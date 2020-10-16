@@ -16,13 +16,16 @@ function populateForm() {
   for (var i =0; i<allProducts.length; i++) {
 
     var optionElement = document.createElement('option');
+    optionElement.setAttribute('class', 'menuOption');
     optionElement.setAttribute('value', allProducts[i].name);
+    // optionElement.setAttribute('selected', 'selected');
+
     optionElement.textContent = allProducts[i].name;
     selectElement.appendChild(optionElement);
 
-    // console.log('populate form function', allProducts[i].name);
-
-
+    console.log('populate form function', allProducts[i].name);
+    console.log(optionElement.setAttribute('value', allProducts[i].name));
+    console.log('selectElement', selectElement);
   }
 
 }
