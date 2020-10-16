@@ -1,17 +1,38 @@
 'use strict';
 
+var allProducts = [];
+
 // Cart constructor.
-var Cart = function(items) {
+var Cart = function(items = []) {
   // this.items is an array of CartItem instances.
-  this.items = items;
+  // this.items = items;
+  this.items;
 };
 
-Cart.prototype.addItem = function(product, quantity) {
+Cart.prototype.addItem = function(event) {
+  // product, quantity removed from function above////////////////////////////////////////////////
+
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+
+  event.preventDefault();
+
+  console.log('test');
+
+  console.log(event.target.option);
+
+  console.log(event.target.quantity.value); //captures value of quantity input box
+
+
 };
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  var stringifyData = JSON.stringify(allProducts);
+
+  localStorage.setItem('storedProductData', stringifyData);
+
+  //console.log('stored product data', stringifyData);
+
 };
 
 Cart.prototype.removeItem = function(item) {
@@ -24,13 +45,14 @@ var CartItem = function(product, quantity) {
   this.quantity = quantity;
 };
 
-// Product contructor.
+// Product constructor.
 var Product = function(filePath, name) {
   this.filePath = filePath;
   this.name = name;
-  Product.allProducts.push(this);
+  // Product.allProducts.push(this);
+  allProducts.push(this);
 };
-Product.allProducts = [];
+// Product.allProducts = [];
 
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
@@ -57,3 +79,9 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
+
+var emptyCart = new Cart();
+
+emptyCart.saveToLocalStorage();
+
+document.getElementById('catalog').addEventListener('submit', emptyCart.addItem);
