@@ -1,6 +1,8 @@
 /* global Product, Cart */
 
 'use strict';
+ 
+
 
 // Set up an empty cart for use on this page.
 var cart = new Cart([]);
@@ -11,8 +13,19 @@ function populateForm() {
 
   //TODO: Add an <option> tag inside the form's select for each product
   var selectElement = document.getElementById('items');
-  for (var i in Product.allProducts) {
+  for (var i =0; i<allProducts.length; i++) {
 
+    var optionElement = document.createElement('option');
+    optionElement.setAttribute('class', 'menuOption');
+    optionElement.setAttribute('value', allProducts[i].name);
+    // optionElement.setAttribute('selected', 'selected');
+
+    optionElement.textContent = allProducts[i].name;
+    selectElement.appendChild(optionElement);
+
+    console.log('populate form function', allProducts[i].name);
+    console.log(optionElement.setAttribute('value', allProducts[i].name));
+    console.log('selectElement', selectElement);
   }
 
 }
@@ -48,6 +61,13 @@ function updateCartPreview() {
   // TODO: Add a new element to the cartContents div with that information
 }
 
+// function test(){
+//   var storedProductData = localStorage.getItem('storedProductData');
+//   var parsedProductData = JSON.parse(storedProductData);
+  
+//   //console.log ('parsed product data', parsedProductData);
+// }
+
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
 // Call that handleSubmit method above and kick off the whole process
@@ -57,3 +77,5 @@ catalogForm.addEventListener('submit', handleSubmit);
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.
 populateForm();
+//test();
+// console.log('allproducts:', allProducts);
