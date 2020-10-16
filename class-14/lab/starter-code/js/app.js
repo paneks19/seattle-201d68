@@ -1,69 +1,81 @@
 'use strict';
 
-var allProducts = [];
+// var allProducts = [];
 
 // Cart constructor.
-var Cart = function(items = []) {
+var Cart = function (items) {
   // this.items is an array of CartItem instances.
-  // this.items = items;
-  this.items;
+  this.items = items;
+  // this.items = [];
 };
 
-Cart.prototype.addItem = function(event) {
+// Cart.prototype.addItem = function (event) {
+Cart.prototype.addItem = function (product, quantity) {
   // product, quantity removed from function above////////////////////////////////////////////////
 
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  var addedItem = new CartItem(product, quantity);
+  this.items.push(addedItem);
+  // event.preventDefault();
 
-  event.preventDefault();
-
-
-
-  console.log('test');
-  for (var j=0; j<allProducts.length; j++){
-    
-    console.log('all products', allProducts[j].name);
-    console.log('event.target', event.target);
-    console.log(event.target.menuOption);
-
-    if (event.target.allProducts[j].name == allProducts[j].name){
-      console.log('event.target.value', event.target.allProducts[j].name);
-    }
-
-  }
-
-  console.log(event.target.quantity.value); //captures value of quantity input box
+  // console.log('first test', event.target.menuOption);
 
 
+  // console.log('test');
+  // for (var j = 0; j < allProducts.length; j++) {
+
+  //   console.log('all products', allProducts[j].name);
+  //   console.log('event.target', event.target);
+  //   // console.log(event.target.menuOption);
+
+  // if (event.target.allProducts[j].name == allProducts[j].name){
+  //   console.log('event.target.value', event.target.allProducts[j].name);
+  //   }
+
+  // }
+
+  // console.log(event.target.quantity.value); //captures value of quantity input box
+
+  // // Cart.items.push(event.target.???????);
+  // console.log(typeof this.items);
+  // console.log('THIS', this.items);
+  // this.items.push(event.target.quantity.value);
+  // console.log(emptyCart.items);
+  console.log('adding item');
 };
 
-Cart.prototype.saveToLocalStorage = function() {
+Cart.prototype.saveToLocalStorage = function () {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
-  var stringifyData = JSON.stringify(allProducts);
+  // var stringifyData = JSON.stringify(allProducts);
 
-  localStorage.setItem('storedProductData', stringifyData);
+  // localStorage.setItem('storedProductData', stringifyData);
 
   //console.log('stored product data', stringifyData);
 
+  var stringifyCartData = JSON.stringify(this.items);
+
+  localStorage.setItem('cart', stringifyCartData);
+
 };
 
-Cart.prototype.removeItem = function(item) {
+Cart.prototype.removeItem = function (item) {
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
 };
 
-var CartItem = function(product, quantity) {
+var CartItem = function (product, quantity) {
   this.product = product;
   this.quantity = quantity;
 };
 
 // Product constructor.
-var Product = function(filePath, name) {
+var Product = function (filePath, name) {
   this.filePath = filePath;
   this.name = name;
-  // Product.allProducts.push(this);
-  allProducts.push(this);
+  Product.allProducts.push(this);
+  // allProducts.push(this);
 };
-// Product.allProducts = [];
+Product.allProducts = [];
 
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
@@ -93,6 +105,6 @@ generateCatalog();
 
 var emptyCart = new Cart();
 
-emptyCart.saveToLocalStorage();
+// emptyCart.saveToLocalStorage();
 
-document.getElementById('catalog').addEventListener('submit', emptyCart.addItem);
+// document.getElementById('catalog').addEventListener('submit', emptyCart.addItem);
